@@ -6,14 +6,14 @@ import { Router } from './router/Router';
 
 function App() {
   return (
-      <BrowserRouter>
-        <div>
+    <BrowserRouter>
+      <div>
         <Link to="/">タイトルに戻る</Link>
-          <br />
-          <Link to="/playGamen">PlayBall!</Link>
-        </div>
-        <Router />
-      </BrowserRouter>
+        <br />
+        <Link to="/playGamen">PlayBall!</Link>
+      </div>
+      <Router />
+    </BrowserRouter>
 
 
   );
