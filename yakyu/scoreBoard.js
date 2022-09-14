@@ -1,4 +1,4 @@
-export default class Score {
+export class scoreBoard {
     #topTeam = "";
     #bottomTeam = "";
     #topPoint = 0;
@@ -12,98 +12,137 @@ export default class Score {
     #inningBoardBottom = [];
 
     constructor() {
-        thithis.#topTeam = "Ateam";
-        thithis.#bottomTeam = "Bteam";
+        this.topTeam = "Ateam";
+        this.bottomTeam = "Bteam";
     }
 
     scoreBoradTop = () => {
-        for (st = 0;st < this.getInning(); st++) {
-            document.write(`${this.getInningBoardTop()[st]}`);
+        for (st = 0;st < thigetInning(); st++) {
+            console.log(`${thigetInningBoardTop()[st]}`);
         }
-        document.write(`|${this.getTopPoint()}<br />`);
+        console.log(`|${thigetTopPoint()}<br />`);
     }
     
     scoreBoradBottom = () => {
         scoreBoradTop();
-        for (sb = 0;sb < this.getInning(); sb++) {
-            document.write(`${this.getInningBoardBottom()[sb]}`);
+        for (sb = 0;sb < thigetInning(); sb++) {
+            console.log(`${thigetInningBoardBottom()[sb]}`);
         }
-        document.write(`|${this.getBottomPoint()}<br />`);
+        console.log(`|${thigetBottomPoint()}<br />`);
+    }
+
+    scoreDisplay = (tt, ts, bt, bs) => {
+        console.log(`${tt}:${ts}対${bt}:${bs}<br />`);    
+    }
+    
+    scoreBoardView = (bol) => {
+        finalInningBottom = getBottomPoint() - beforeBottomPoint;
+        if (topBottom) {
+            getInningBoardTop().push(getTopPoint() - beforeTopPoint);
+            beforeTopPoint = getTopPoint();
+        } else {
+            getInningBoardBottom().push(getBottomPoint() - beforeBottomPoint);
+            beforeBottomPoint = getBottomPoint();
+        }
+        if (topBottom) {
+            scoreBoradTop();
+            for (sb = 0;sb < getInning() - 1; sb++) {
+                console.log(`${getInningBoardBottom()[sb]}`);
+            }
+            console.log(`|${getBottomPoint()}<br />`);
+        } else if (!topBottom && getInning() != getfinalInning()) {
+            scoreBoradBottom();
+        } else {
+            if (bol) {
+                scoreBoradTop();
+                for (sb = 0;sb < getInning() - 1; sb++) {
+                    console.log(`${getInningBoardBottom()[sb]}`);
+                }
+                if (finalInningBottom == 0) {
+                    console.log(`X|${getBottomPoint()}<br />`);
+                } else {
+                    console.log(`${getInningBoardBottom()[getInning() - 1]}`);
+                    console.log(`x|${getBottomPoint()}<br />`);
+                }
+            } else {
+                scoreBoradBottom();
+            }
+        }
     }
 
     getTopTeam() {
-        return thithis.#topTeam;
+        return this.#topTeam;
     }
 
     getBottomTeam() {
-        return thithis.#bottomTeam;
+        return this.#bottomTeam;
     }
 
     getTopPoint() {
-        return thithis.#topPoint;
+        return this.#topPoint;
     }
 
     addTopPoint() {
-        return thithis.#topPoint++;
+        return this.#topPoint++;
     }
 
     getBottomPoint() {
-        return thithis.#bottomPoint;
+        return this.#bottomPoint;
     }
 
     addBottomPoint() {
-        return thithis.#bottomPoint++;
+        return this.#bottomPoint++;
     }
 
     getInning() {
-        return thithis.#inning;
+        return this.#inning;
     }
 
     addInning() {
-        return thithis.#inning++;
+        return this.#inning++;
     }
 
     getFinalInning() {
-        return thithis.#finalInning;
+        return this.#finalInning;
     }
     
     getTopBottom() {
-        return thithis.#topBottom;
+        return this.#topBottom;
     }
 
     changeTopBottom() {
-        thithis.#topBottom = !thithis.#topBottom;
-        return thithis.#topBottom;
+        this.#topBottom = !this.#topBottom;
+        return this.#topBottom;
     }
 
     getBeforeTopPoint() {
-        return thithis.#beforeTopPoint;
+        return this.#beforeTopPoint;
     }
 
     setBeforeTopPoint(num) {
-        thithis.#beforeTopPoint = num;
+        this.#beforeTopPoint = num;
     }
 
     getBeforeBottomPoint() {
-        return thithis.#beforeBottomPoint;
+        return this.#beforeBottomPoint;
     }
 
     setBeforeBottomPoint(num) {
-        thithis.#beforeBottomPoint = num;
+        this.#beforeBottomPoint = num;
     }
     getInningBoardTop() {
-        return thithis.#inningBoardTop;
+        return this.#inningBoardTop;
     }
 
     setInningBoardTop(num) {
-        thithis.#inningBoardTop = num;
+        this.#inningBoardTop = num;
     }
 
     getInningBoardBottom() {
-        return thithis.#inningBoardBottom;
+        return this.#inningBoardBottom;
     }
 
     setInningBoardBottom(num) {
-        thithis.#inningBoardBottom = num;
+        this.#inningBoardBottom = num;
     }
 }

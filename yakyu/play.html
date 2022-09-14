@@ -5,16 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>play</title>
-    <!-- <script type="text/javascript" src="Game.js"></script>
-    <script type="text/javascript" src="Score.js"></script> -->
-    <!-- <script src="Score.js"></script>
-    <script src="Game.js"></script> -->
-    <!-- <script src="baseball.js"></script> -->
-    <script src="play.js"></script>
+        <script src="baseball.js"></script>
+    <!-- <script src="./play.js" type="module">
+        window.game = game();
+    </script> -->
+    <!-- 読み込むため必要
+    <script type="module"> -->
+        <!-- import {game} from "./play.js";
+        window.game = game; -->
+    <!-- </script> -->
 
 </head>
 <body>
-    <input type="button" value="PlayBall!!" onclick="game();" />
+    <input type="button" value="PlayBall!!" onclick="game()" />
     
 </body>
 </html>

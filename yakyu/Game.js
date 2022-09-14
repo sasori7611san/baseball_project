@@ -12,31 +12,31 @@ const RANDOM_NO = 100;
 
 const game = () => {
     while ( s.getInning() <= s.getFinalInning() - 1) {
-        document.write(s.getTopTeam() + ":" + s.getTopPoint() + "対" + s.getBottomTeam() + ":" +s.getBottomPoint() + "<br />"); 
-        s.getTopBottom() ? document.write( s.getInning() + "回の表" + s.getTopTeam() + "の攻撃") : document.write( s.getInning() + "回の裏" + s.getBottomTeam() + "の攻撃<br />");
+        console.log(s.getTopTeam() + ":" + s.getTopPoint() + "対" + s.getBottomTeam() + ":" +s.getBottomPoint() + "<br />"); 
+        s.getTopBottom() ? console.log( s.getInning() + "回の表" + s.getTopTeam() + "の攻撃") : console.log( s.getInning() + "回の裏" + s.getBottomTeam() + "の攻撃<br />");
         normalAttack();
         change();
     }
-    document.write(s.getTopTeam() + ":" + s.getTopPoint() + "対" + s.getBottomTeam() + ":" +s.getBottomPoint() + "<br />"); 
-    document.write(s.getInning() + "回の表" + s.getTopTeam() + "の攻撃<br />");
+    console.log(s.getTopTeam() + ":" + s.getTopPoint() + "対" + s.getBottomTeam() + ":" +s.getBottomPoint() + "<br />"); 
+    console.log(s.getInning() + "回の表" + s.getTopTeam() + "の攻撃<br />");
     normalAttack();
     change();
     if (s.getTopPoint() < s.getBottomPoint()) {
-        document.write(s.getTopTeam() + ":" + s.getTopPoint() + "対" + s.getBottomTeam() + ":" +s.getBottomPoint() + "で、" + s.getBottomTeam() + "の勝ち<br />");
+        console.log(s.getTopTeam() + ":" + s.getTopPoint() + "対" + s.getBottomTeam() + ":" +s.getBottomPoint() + "で、" + s.getBottomTeam() + "の勝ち<br />");
     } else {
-        document.write(s.getTopTeam() + ":" + s.getTopPoint() + "対" + s.getBottomTeam() + ":" +s.getBottomPoint() + "<br />"); 
-        document.write( s.getInning() + "回の裏" + s.getBottomTeam() + "の攻撃<br />");
+        console.log(s.getTopTeam() + ":" + s.getTopPoint() + "対" + s.getBottomTeam() + ":" +s.getBottomPoint() + "<br />"); 
+        console.log( s.getInning() + "回の裏" + s.getBottomTeam() + "の攻撃<br />");
         while (outCount < 3) {
             versus();
             if (s.getTopPoint() < s.getBottomPoint()) {
-                document.write(s.getTopTeam() + ":" + s.getTopPoint() + "対" + s.getBottomTeam() + ":" +s.getBottomPoint() + "で、" + s.getBottomTeam() + "の勝ち<br />");
+                console.log(s.getTopTeam() + ":" + s.getTopPoint() + "対" + s.getBottomTeam() + ":" +s.getBottomPoint() + "で、" + s.getBottomTeam() + "の勝ち<br />");
                 break;
             }
         }
         if (s.getTopPoint() == s.getBottomPoint()) {
-            document.write(s.getTopTeam() + ":" + s.getTopPoint() + "対" + s.getBottomTeam() + ":" +s.getBottomPoint() + "で、引き分け<br />");            
+            console.log(s.getTopTeam() + ":" + s.getTopPoint() + "対" + s.getBottomTeam() + ":" +s.getBottomPoint() + "で、引き分け<br />");            
         } else if (s.getTopPoint() > s.getBottomPoint()) {
-            document.write(s.getTopTeam() + ":" + s.getTopPoint() + "対" + s.getBottomTeam() + ":" +s.getBottomPoint() + "で、" + s.getTopTeam() + "の勝ち<br />");
+            console.log(s.getTopTeam() + ":" + s.getTopPoint() + "対" + s.getBottomTeam() + ":" +s.getBottomPoint() + "で、" + s.getTopTeam() + "の勝ち<br />");
         }
     }
 };
@@ -46,23 +46,23 @@ const  versus = () => {
     versusResult =  randomNum(RANDOM_NO);
     if (versusResult < 18) {
         outCount++;
-        document.write("三振！" + outCount + "アウト<br />" );
+        console.log("三振！" + outCount + "アウト<br />" );
     } else if(versusResult < 26) {
-        document.write("フォアボール<br />");
+        console.log("フォアボール<br />");
         fourBall();
     } else if(versusResult < 51) {
-        document.write("打った");
+        console.log("打った");
         batting();
     }else {
         outCount++;
         let mediocre = 0;
         mediocre = randomNum(RANDOM_NO);
         if (mediocre < 45) {
-            document.write(fielders[randomNum(GORO)] + "ゴロ" + outCount + "アウト<br />");
+            console.log(fielders[randomNum(GORO)] + "ゴロ" + outCount + "アウト<br />");
         } else if (mediocre < 55) {
-            document.write(fielders[randomNum(LINER)] + "ライナー" + outCount + "アウト<br />");            
+            console.log(fielders[randomNum(LINER)] + "ライナー" + outCount + "アウト<br />");            
         } else {
-            document.write(fielders[randomNum(FLY)] + "フライ" + outCount + "アウト<br />");              
+            console.log(fielders[randomNum(FLY)] + "フライ" + outCount + "アウト<br />");              
         }
     }
 };
@@ -70,7 +70,7 @@ const  versus = () => {
 const batting = () => {
     battingResult = randomNum(RANDOM_NO);
     if (battingResult < 7) {
-        document.write("ホームラン！<br />");
+        console.log("ホームラン！<br />");
         for (a = 0; a < runner.length; a++) {
             if(runner[a]) {
                 point();
@@ -79,7 +79,7 @@ const batting = () => {
         }
         point();
     } else if (battingResult < 9) {
-        document.write("三塁打！<br />");
+        console.log("三塁打！<br />");
         for (a = 0; a < runner.length; a++) {
             if(runner[a]) {
                 point();
@@ -88,7 +88,7 @@ const batting = () => {
         }
         runner[3-1] = true;
     } else if (battingResult < 26) {
-        document.write("二塁打！<br />");
+        console.log("二塁打！<br />");
         if (runner[3-1]) {
             runner[3-1] = false;
             point();
@@ -103,7 +103,7 @@ const batting = () => {
         }
         runner[2-1] = true;     
     } else {
-        document.write("ヒット！<br />");
+        console.log("ヒット！<br />");
         if (runner[3-1]) {
             runner[3-1] = false;
             point();
@@ -175,7 +175,7 @@ const baseCall = (base) => {
     for (b = 0;b < call.length; b++) {
         speak += call[b];
     }
-    document.write(speak);
+    console.log(speak);
 }
 
 const randomNum = (num) => {

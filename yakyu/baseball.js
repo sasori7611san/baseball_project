@@ -23,36 +23,36 @@ let bottomWon = false;
 const game = () => {
     while (inning <= finalInning - 1) {
         scoreDisplay(topTeam, topPoint, bottomTeam, bottomPoint);
-        topBottom ? document.write(`${inning}回の表${topTeam}の攻撃<br />`) : document.write(`${inning}回の裏${bottomTeam}の攻撃<br />`);
+        topBottom ? console.log(`${inning}回の表${topTeam}の攻撃<br />`) : console.log(`${inning}回の裏${bottomTeam}の攻撃<br />`);
         normalAttack();
         change();
     }
     scoreDisplay(topTeam, topPoint, bottomTeam, bottomPoint); 
-    document.write(`${inning}回の表${topTeam}の攻撃<br />`);
+    console.log(`${inning}回の表${topTeam}の攻撃<br />`);
     normalAttack();
     change();
     if (topPoint < bottomPoint) {
-        document.write(`${topTeam}:${topPoint}対${bottomTeam}:${bottomPoint}で、${bottomTeam}の勝ち<br />`);
+        console.log(`${topTeam}:${topPoint}対${bottomTeam}:${bottomPoint}で、${bottomTeam}の勝ち<br />`);
         bottomWon = true;
         socoreBard(bottomWon);
     } else {
         scoreDisplay(topTeam, topPoint, bottomTeam, bottomPoint); 
-        document.write(`${inning}回の裏${bottomTeam}の攻撃<br />`);
+        console.log(`${inning}回の裏${bottomTeam}の攻撃<br />`);
         while (outCount < 3) {
             versus();
             if (topPoint < bottomPoint) {
-                document.write(`${topTeam}:${topPoint}対${bottomTeam}:${bottomPoint}で、${bottomTeam}の勝ち<br />`);
+                console.log(`${topTeam}:${topPoint}対${bottomTeam}:${bottomPoint}で、${bottomTeam}の勝ち<br />`);
                 bottomWon = true;
                 socoreBard(bottomWon);
                 break;
             }
         }
         if (topPoint == bottomPoint) {
-            document.write(`${topTeam}:${topPoint}対${bottomTeam}:${bottomPoint}で、引き分け<br />`);
+            console.log(`${topTeam}:${topPoint}対${bottomTeam}:${bottomPoint}で、引き分け<br />`);
             bottomWon = false;
             socoreBard(bottomWon);            
         } else if (topPoint > bottomPoint) {
-            document.write(`${topTeam}:${topPoint}対${bottomTeam}:${bottomPoint}で、${topTeam}の勝ち<br />`);
+            console.log(`${topTeam}:${topPoint}対${bottomTeam}:${bottomPoint}で、${topTeam}の勝ち<br />`);
             bottomWon = false;
             socoreBard(bottomWon);
         }
@@ -64,23 +64,23 @@ const  versus = () => {
     versusResult =  randomNum(RANDOM_NO);
     if (versusResult < 18) {
         outCount++;
-        document.write(`三振！${outCount}アウト<br />` );
+        console.log(`三振！${outCount}アウト<br />` );
     } else if(versusResult < 26) {
-        document.write("フォアボール<br />");
+        console.log("フォアボール<br />");
         fourBall(topBottom);
     } else if(versusResult < 51) {
-        document.write("打った");
+        console.log("打った");
         batting(topBottom);
     }else {
         outCount++;
         let mediocre = 0;
         mediocre = randomNum(RANDOM_NO);
         if (mediocre < 45) {
-            document.write(`${fielders[randomNum(GORO)]}ゴロ${outCount}アウト<br />`);
+            console.log(`${fielders[randomNum(GORO)]}ゴロ${outCount}アウト<br />`);
         } else if (mediocre < 55) {
-            document.write(`${fielders[randomNum(LINER)]}ライナー${outCount}アウト<br />`);            
+            console.log(`${fielders[randomNum(LINER)]}ライナー${outCount}アウト<br />`);            
         } else {
-            document.write(`${fielders[randomNum(FLY)]}フライ${outCount}アウト<br />`);              
+            console.log(`${fielders[randomNum(FLY)]}フライ${outCount}アウト<br />`);              
         }
     }
 };
@@ -88,7 +88,7 @@ const  versus = () => {
 const batting = (topBottom) => {
     battingResult = randomNum(RANDOM_NO);
     if (battingResult < 7) {
-        document.write("ホームラン！<br />");
+        console.log("ホームラン！<br />");
         for (a = 0; a < runner.length; a++) {
             if(runner[a]) {
                 point(topBottom);
@@ -97,7 +97,7 @@ const batting = (topBottom) => {
         }
         point(topBottom);
     } else if (battingResult < 9) {
-        document.write("三塁打！<br />");
+        console.log("三塁打！<br />");
         for (a = 0; a < runner.length; a++) {
             if(runner[a]) {
                 point(topBottom);
@@ -106,7 +106,7 @@ const batting = (topBottom) => {
         }
         runner[3-1] = true;
     } else if (battingResult < 26) {
-        document.write("二塁打！<br />");
+        console.log("二塁打！<br />");
         if (runner[3-1]) {
             runner[3-1] = false;
             point(topBottom);
@@ -121,7 +121,7 @@ const batting = (topBottom) => {
         }
         runner[2-1] = true;     
     } else {
-        document.write("ヒット！<br />");
+        console.log("ヒット！<br />");
         if (runner[3-1]) {
             runner[3-1] = false;
             point(topBottom);
@@ -194,7 +194,7 @@ const baseCall = (base) => {
     for (b = 0;b < call.length; b++) {
         speak += call[b];
     }
-    document.write(speak);
+    console.log(speak);
 }
 
 const randomNum = (num) => {
@@ -202,7 +202,7 @@ const randomNum = (num) => {
 }
 
 const scoreDisplay = (tt, ts, bt, bs) => {
-    document.write(`${tt}:${ts}対${bt}:${bs}<br />`);    
+    console.log(`${tt}:${ts}対${bt}:${bs}<br />`);    
 }
 
 const socoreBard = (bol) => {
@@ -217,22 +217,22 @@ const socoreBard = (bol) => {
     if (topBottom) {
         scoreBoradTop();
         for (sb = 0;sb < inning - 1; sb++) {
-            document.write(`${inningBoardBottom[sb]}`);
+            console.log(`${inningBoardBottom[sb]}`);
         }
-        document.write(`|${bottomPoint}<br />`);
+        console.log(`|${bottomPoint}<br />`);
     } else if (!topBottom && inning != finalInning) {
         scoreBoradBottom();
     } else {
         if (bol) {
             scoreBoradTop();
             for (sb = 0;sb < inning - 1; sb++) {
-                document.write(`${inningBoardBottom[sb]}`);
+                console.log(`${inningBoardBottom[sb]}`);
             }
             if (finalInningBottom == 0) {
-                document.write(`X|${bottomPoint}<br />`);
+                console.log(`X|${bottomPoint}<br />`);
             } else {
-                document.write(`${inningBoardBottom[inning - 1]}`);
-                document.write(`x|${bottomPoint}<br />`);
+                console.log(`${inningBoardBottom[inning - 1]}`);
+                console.log(`x|${bottomPoint}<br />`);
             }
         } else {
             scoreBoradBottom();
@@ -242,15 +242,15 @@ const socoreBard = (bol) => {
 
 const scoreBoradTop = () => {
     for (st = 0;st < inning; st++) {
-        document.write(`${inningBoardTop[st]}`);
+        console.log(`${inningBoardTop[st]}`);
     }
-    document.write(`|${topPoint}<br />`);
+    console.log(`|${topPoint}<br />`);
 }
 
 const scoreBoradBottom = () => {
     scoreBoradTop();
     for (sb = 0;sb < inning; sb++) {
-        document.write(`${inningBoardBottom[sb]}`);
+        console.log(`${inningBoardBottom[sb]}`);
     }
-    document.write(`|${bottomPoint}<br />`);
+    console.log(`|${bottomPoint}<br />`);
 }

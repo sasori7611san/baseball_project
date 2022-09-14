@@ -22,7 +22,7 @@ let inningBoardTop: number[] = [];
 let inningBoardBottom: number[] = [];
 let bottomWon: boolean = false;
 
-const game = () => {
+export const game = () => {
     while (inning <= finalInning - 1) {
         scoreDisplay(topTeam, topPoint, bottomTeam, bottomPoint);
         topBottom ? console.log(`${inning}回の表${topTeam}の攻撃<br />`) : console.log(`${inning}回の裏${bottomTeam}の攻撃<br />`);

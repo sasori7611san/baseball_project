@@ -10,11 +10,17 @@
     <!-- <script src="Score.js"></script>
     <script src="Game.js"></script> -->
     <!-- <script src="baseball.js"></script> -->
-    <script src="baseball.ts"></script>
+
+    <!-- <script src="baseball.ts"></script> -->
+    <!-- 読み込むため必要 -->
+    <script type="module">
+        import {game} from "./baseball.ts";
+        window.game = game;
+    </script>
 
 </head>
 <body>
-    <input type="button" value="PlayBall!!" onclick="game();" />
+    <input type="button" value="PlayBall!!" onclick="game()" />
     
 </body>
 </html>
